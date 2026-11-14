@@ -20,14 +20,14 @@ class C_AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed',
-            'peran' => 'required|in:relawan,mitra',
+            'role' => 'required|in:relawan,mitra',
         ]);
 
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'peran' => $data['peran'],
+            'role' => $data['role'],
             'status_akun' => 'menunggu',
         ]);
 
@@ -71,9 +71,9 @@ class C_AuthController extends Controller
 
     private function arahkanDashboard()
     {
-        $peran = Auth::user()->peran;
+        $role = Auth::user()->role;
 
-        return match ($peran) {
+        return match ($role) {
             'admin' => redirect()->route('admin.dashboard'),
             'relawan' => redirect()->route('relawan.dashboard'),
             'mitra' => redirect()->route('mitra.dashboard'),

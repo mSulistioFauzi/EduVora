@@ -12,10 +12,10 @@
             <div class="sidebar-menu-title">Menu Utama</div>
             <ul class="sidebar-menu-list">
                 <li class="sidebar-menu-item">
-                    @if (auth()->user()->peran === 'admin')
+                    @if (auth()->user()->role === 'admin')
                         <a href="{{ route('admin.dashboard') }}"
                             class="sidebar-menu-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
-                        @elseif (auth()->user()->peran === 'relawan')
+                        @elseif (auth()->user()->role === 'relawan')
                             <a href="{{ route('relawan.dashboard') }}"
                                 class="sidebar-menu-link {{ request()->routeIs('relawan.dashboard') ? 'active' : '' }}">
                             @else
@@ -30,7 +30,7 @@
         </div>
 
         {{-- MENU ADMIN --}}
-        @if (auth()->user()->peran === 'admin')
+        @if (auth()->user()->role === 'admin')
             <div class="sidebar-menu-section">
                 <div class="sidebar-menu-title">Menu Admin</div>
                 <ul class="sidebar-menu-list">
@@ -69,7 +69,7 @@
         @endif
 
         {{-- MENU RELAWAN --}}
-        @if (auth()->user()->peran === 'relawan')
+        @if (auth()->user()->role === 'relawan')
             <div class="sidebar-menu-section">
                 <div class="sidebar-menu-title">Menu Relawan</div>
                 <ul class="sidebar-menu-list">
@@ -102,7 +102,7 @@
         @endif
 
         {{-- MENU MITRA --}}
-        @if (auth()->user()->peran === 'mitra')
+        @if (auth()->user()->role === 'mitra')
             <div class="sidebar-menu-section">
                 <div class="sidebar-menu-title">Menu Mitra</div>
                 <ul class="sidebar-menu-list">

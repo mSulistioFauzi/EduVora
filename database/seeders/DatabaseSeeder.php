@@ -23,10 +23,14 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name' => 'Administrator',
-            'email' => 'admin@gmail.com',
-            'peran' => 'admin',
+            'email' => 'admin@eduvora.test',
+            'role' => 'admin',
             'status_akun' => 'terverifikasi',
             'password' =>  bcrypt('admin123'),
+        ]);
+
+        $this->call([
+            MataPelajaranSeeder::class,
         ]);
     }
 }

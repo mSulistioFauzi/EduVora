@@ -43,7 +43,7 @@
                         </li>
                         <li>
                             <span class="dropdown-item-text">
-                                Peran: {{ ucfirst(auth()->user()->peran) }}
+                                {{ ucfirst(auth()->user()->role) }}
                             </span>
                         </li>
                         <li>

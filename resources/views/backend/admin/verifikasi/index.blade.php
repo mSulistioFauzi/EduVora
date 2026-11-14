@@ -64,7 +64,7 @@
                 <tr>
                     <th>No.</th>
                     <th>Pengguna</th>
-                    <th>Peran</th>
+                    <th>Role</th>
                     <th>Tanggal Daftar</th>
                     <th>Status Akun</th>
                     <th class="text-center">Aksi</th>
@@ -100,7 +100,7 @@
                         </td>
 
                         <td>
-                            @if ($item->peran == 'relawan')
+                            @if ($item->role == 'relawan')
                                 <span class="badge-table success">Relawan</span>
                             @else
                                 <span class="badge-table pending">Mitra</span>

@@ -11,7 +11,7 @@ class C_VerifikasiAkun extends Controller
     public function index(Request $request)
     {
         $akun = User::with(['profilRelawan', 'profilMitra'])
-            ->whereIn('peran', ['relawan', 'mitra'])
+            ->whereIn('role', ['relawan', 'mitra'])
             ->when($request->cari, function ($query, $cari) {
                 $query->where(function ($q) use ($cari) {
                     $q->where('name', 'like', "%{$cari}%")
@@ -28,7 +28,7 @@ class C_VerifikasiAkun extends Controller
     public function detail($id)
     {
         $akun = User::with(['profilRelawan', 'profilMitra'])
-            ->whereIn('peran', ['relawan', 'mitra'])
+            ->whereIn('role', ['relawan', 'mitra'])
             ->findOrFail($id);
 
         return view('backend.admin.verifikasi.detail', compact('akun'));
@@ -41,7 +41,7 @@ class C_VerifikasiAkun extends Controller
             'status_akun' => 'required|in:terverifikasi,perlu_perbaikan,ditolak',
         ]);
 
-        $akun = User::whereIn('peran', ['relawan', 'mitra'])
+        $akun = User::whereIn('role', ['relawan', 'mitra'])
             ->findOrFail($id);
 
         $akun->update([

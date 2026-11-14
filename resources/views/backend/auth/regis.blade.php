@@ -129,7 +129,7 @@
                 <!-- Pilihan Peran -->
                 <div class="login-form-group">
 
-                    <label for="peran" class="login-form-label">
+                    <label for="role" class="login-form-label">
                         Daftar Sebagai
                     </label>
 
@@ -137,14 +137,14 @@
 
                         <i class="bi bi-people input-icon"></i>
 
-                        <select id="peran" name="peran" class="login-input" required>
+                        <select id="role" name="role" class="login-input" required>
                             <option value="">Pilih Peran</option>
 
-                            <option value="relawan" {{ old('peran') == 'relawan' ? 'selected' : '' }}>
+                            <option value="relawan" {{ old('role') == 'relawan' ? 'selected' : '' }}>
                                 Relawan
                             </option>
 
-                            <option value="mitra" {{ old('peran') == 'mitra' ? 'selected' : '' }}>
+                            <option value="mitra" {{ old('role') == 'mitra' ? 'selected' : '' }}>
                                 Mitra
                             </option>
                         </select>

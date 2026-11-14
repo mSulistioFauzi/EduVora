@@ -36,8 +36,8 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label-custom">Peran</label>
-                        <input type="text" class="form-control-custom" value="{{ ucfirst($akun->peran) }}" readonly>
+                        <label class="form-label-custom">role</label>
+                        <input type="text" class="form-control-custom" value="{{ ucfirst($akun->role) }}" readonly>
                     </div>
 
                     <div class="col-md-6">
@@ -50,7 +50,7 @@
         </div>
 
         {{-- Profil relawan --}}
-        @if ($akun->peran === 'relawan')
+        @if ($akun->role === 'relawan')
             @php $profil = $akun->profilRelawan; @endphp
 
             <div class="col-12">
@@ -147,7 +147,7 @@
         @endif
 
         {{-- Profil mitra --}}
-        @if ($akun->peran === 'mitra')
+        @if ($akun->role === 'mitra')
             @php $profil = $akun->profilMitra; @endphp
 
             <div class="col-12">

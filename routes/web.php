@@ -25,8 +25,8 @@ Route::middleware('guest')->group(function () {
 // Logout
 Route::post('/logout', [C_AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-// Dashboard berdasarkan peran
-Route::middleware(['auth', 'peran:admin'])->prefix('admin')->name('admin.')->group(function () {
+// Dashboard berdasarkan role
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.admin.dashboard');
     })->name('dashboard');
@@ -41,7 +41,7 @@ Route::middleware(['auth', 'peran:admin'])->prefix('admin')->name('admin.')->gro
     Route::resource('/program', C_AdminProgramMengajar::class)->only(['index', 'create', 'store', 'show']);;
 });
 
-Route::middleware(['auth', 'peran:relawan'])->prefix('relawan')->name('relawan.')->group(function () {
+Route::middleware(['auth', 'role:relawan'])->prefix('relawan')->name('relawan.')->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.relawan.dashboard');
     })->name('dashboard');
@@ -51,7 +51,7 @@ Route::middleware(['auth', 'peran:relawan'])->prefix('relawan')->name('relawan.'
     Route::resource('/program', C_RelawanProgramMengajar::class)->only(['index', 'show']);
 });
 
-Route::middleware(['auth', 'peran:mitra'])->prefix('mitra')->name('mitra.')->group(function () {
+Route::middleware(['auth', 'role:mitra'])->prefix('mitra')->name('mitra.')->group(function () {
     Route::get('/dashboard', function () {
         return view('backend.mitra.dashboard');
     })->name('dashboard');
